@@ -1,0 +1,53 @@
+<div class="card-body">
+  <h2>Diferença entre datas</h2>
+  <p class="subtitle">Escolha duas datas e calcule a diferença em anos, meses e dias entre as datas escolhidas</p>
+
+  <form class="form" (ngSubmit)="getDiffBetweenDates()" novalidate>
+    <div class="form-row">
+      <label for="d-start">Data inicial</label>
+      <input id="d-start" name="dStart" type="date" [(ngModel)]="startDate" />
+    </div>
+
+    <div class="form-row">
+      <label for="d-end">Data final</label>
+      <input id="d-end" name="dEnd" type="date" [(ngModel)]="endDate" />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-primary">Calcular diferença</button>
+    </div>
+  </form>
+
+  <div *ngIf="loading" class="status">Carregando...</div>
+  <div *ngIf="error" class="status error">{{ error }}</div>
+
+  <div *ngIf="diffResult" class="result">
+    <h3>Resultado</h3>
+
+    <p class="human-readable">{{ diffResultDisplay }}</p>
+
+    <table *ngIf="diffResult" class="result-table">
+      <thead>
+        <tr>
+          <th>Unidade</th>
+          <th>Quantidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Anos</td>
+          <td>{{ diffResult.years }}</td>
+        </tr>
+        <tr>
+          <td>Meses</td>
+          <td>{{ diffResult.months }}</td>
+        </tr>
+        <tr>
+          <td>Dias</td>
+          <td>{{ diffResult.days }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

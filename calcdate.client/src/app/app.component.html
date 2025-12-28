@@ -1,0 +1,26 @@
+<div class="layout">
+  <aside class="sidebar">
+    <div class="logo">CalcDate</div>
+    <nav>
+      <ul>
+        <li><a routerLink="/diff" routerLinkActive="active">Diferença entre datas</a></li>
+        <li><a routerLink="/count-days-week" routerLinkActive="active">Contar dias da semana</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="main-header">
+      <button (click)="toggleTheme()" class="theme-toggle-btn" [attr.aria-label]="isDark ? 'Ativar tema claro' : 'Ativar tema escuro'">
+        <span *ngIf="isDark" class="theme-icon">☀️</span>
+        <span *ngIf="!isDark" class="theme-icon">🌙</span>
+      </button>
+    </header>
+
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+</div>
