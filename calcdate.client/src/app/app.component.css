@@ -1,0 +1,242 @@
+/* App layout and sidebar styles (component-specific) */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  gap: 1.5rem;
+}
+
+.sidebar {
+  width: 220px;
+  background: var(--dark-card);
+  border-right: 1px solid var(--dark-border);
+  padding: 1.25rem;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+body.light-theme .sidebar {
+  background: var(--card-bg);
+  border-right: 1px solid var(--border);
+}
+
+.logo {
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  margin: 0.5rem 0;
+}
+
+nav a {
+  color: var(--dark-text);
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+nav a.active,
+nav a:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2.5rem;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    justify-content: space-between;
+  }
+}
+
+.main-header h1 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  letter-spacing: -0.5px;
+  flex: 1;
+  text-align: center;
+}
+
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+.theme-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: transparent;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.content > .card {
+  width: 100%;
+  max-width: none;
+}
+
+.card {
+  background: var(--dark-card);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+  overflow: hidden;
+  border: 1px solid var(--dark-border);
+}
+
+body.light-theme .card {
+  background: var(--card-bg);
+  box-shadow: 0 10px 30px rgba(20, 30, 60, 0.06);
+  border: 1px solid var(--border);
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: 1.9rem;
+}
+
+h2 {
+  font-size: 1.35rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+p,
+label,
+input,
+select,
+button {
+  font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .content {
+    max-width: 900px;
+    padding: 0 1rem;
+  }
+
+  .sidebar {
+    position: relative;
+    height: auto;
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  nav li {
+    margin: 0;
+  }
+
+  .content {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-row label {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-row input,
+  .form-row select,
+  .form-row textarea {
+    width: 100%;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}

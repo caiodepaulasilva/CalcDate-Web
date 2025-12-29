@@ -1,0 +1,6 @@
+@CalcDate.Server_HostAddress = http://localhost:5090
+
+GET {{CalcDate.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
