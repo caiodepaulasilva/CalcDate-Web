@@ -1,3 +1,4 @@
+<div class="card">
 <div class="card-body">
   <h2>Contar dias da semana</h2>
   <p class="subtitle">Escolha duas datas e calcule quantas ocorrências dos dias da semana existem no intervalo.</p>
@@ -11,7 +12,7 @@
     <div class="form-row">
       <label for="cd-end">Data final</label>
       <input id="cd-end" name="cdEnd" type="date" [(ngModel)]="endDate" />
-    </div>    
+    </div>
 
     <div class="form-actions">
       <button type="submit" class="btn-primary">Contar dias</button>
@@ -21,23 +22,23 @@
   <div *ngIf="loading" class="status">Carregando...</div>
   <div *ngIf="error" class="status error">{{ error }}</div>
 
-  <div *ngIf="countResult !== null" class="result">
-    <h3>Resultado</h3>    
+  <div *ngIf="weekdayDisplayList.length" class="result">
+    <h3>Resultado</h3>
 
-    <table *ngIf="countResultEntries.length" class="result-table">
+    <table class="result-table">
       <thead>
         <tr>
           <th>Dia da semana</th>
-          <th>Quantidade </th>
+          <th>Quantidade</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let e of countResultEntries">
-          <td>{{ e[0] }}</td>
-          <td>{{ e[1] }}</td>
+        <tr *ngFor="let item of weekdayDisplayList">
+          <td>{{ item.label }}</td>
+          <td>{{ item.count }}</td>
         </tr>
       </tbody>
     </table>
-
+    </div>
   </div>
 </div>

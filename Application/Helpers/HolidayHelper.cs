@@ -6,7 +6,7 @@ namespace Application.Helpers
 {
     public static class HolidayHelper
     {
-        
+
         private static readonly List<Holiday> holidays = GetAll();
 
         public static Dictionary<Locations, string> GetLocationsLabels()
@@ -50,13 +50,13 @@ namespace Application.Helpers
             [
                 // National
                 new(date: "01/01", name: "Ano Novo", location: Locations.Nacional),
-                new(date: "21/04", name: "Tiradentes", location: Locations.Nacional ),
-                new(date: "01/05", name: "Dia do Trabalho", location: Locations.Nacional ),
-                new(date: "07/09", name: "Independência do Brasil", location: Locations.Nacional ),
-                new(date: "12/10", name: "Nossa Senhora Aparecida", location: Locations.Nacional ),
-                new(date: "02/11", name: "Finados", location: Locations.Nacional ),
-                new(date: "15/11", name: "Proclamação da República", location: Locations.Nacional ),
-                new(date: "25/12", name: "Natal", location: Locations.Nacional ),
+                new(date: "21/04", name: "Tiradentes", location: Locations.Nacional),
+                new(date: "01/05", name: "Dia do Trabalho", location: Locations.Nacional),
+                new(date: "07/09", name: "Independência do Brasil", location: Locations.Nacional),
+                new(date: "12/10", name: "Nossa Senhora Aparecida", location: Locations.Nacional),
+                new(date: "02/11", name: "Finados", location: Locations.Nacional),
+                new(date: "15/11", name: "Proclamação da República", location: Locations.Nacional),
+                new(date: "25/12", name: "Natal", location: Locations.Nacional),
 
                 // Acre
                 new(date: "15/06", name: "Aniversário do Estado", location: Locations.Acre),
@@ -88,61 +88,61 @@ namespace Application.Helpers
                 new(date: "30/11", name: "Dia do Evangélico", location: Locations.DistritoFederal),
 
                 // Espírito Santo
-                new(date: "23/05", name: "Colonização do Solo Espírito-santense", location: Locations.EspiritoSanto ),
+                new(date: "23/05", name: "Colonização do Solo Espírito-santense", location: Locations.EspiritoSanto),
 
                 // Goiás
-                new(date: "28/10", name: "Dia do Servidor Público (estadual)", location: Locations.Goias ),
+                new(date: "28/10", name: "Dia do Servidor Público (estadual)", location: Locations.Goias),
 
                 // Maranhão
-                new(date: "28/07", name: "Adesão do Maranhão à Independência do Brasil", location: Locations.Maranhao ),
+                new(date: "28/07", name: "Adesão do Maranhão à Independência do Brasil", location: Locations.Maranhao),
 
                 // Mato Grosso
-                new(date: "20/11", name: "Dia da Consciência Negra", location: Locations.MatoGrosso ),
+                new(date: "20/11", name: "Dia da Consciência Negra", location: Locations.MatoGrosso),
 
                 // Mato Grosso do Sul
-                new(date: "11/10", name: "Criação do Estado", location: Locations.MatoGrossoDoSul ),
+                new(date: "11/10", name: "Criação do Estado", location: Locations.MatoGrossoDoSul),
 
                 // Minas Gerais
-                new(date: "21/04", name: "Data Magna (Tiradentes)", location: Locations.MinasGerais ),
+                new(date: "21/04", name: "Data Magna (Tiradentes)", location: Locations.MinasGerais),
 
                 // Pará
-                new(date: "15/08", name: "Adesão do Pará à Independência do Brasil", location: Locations.Para ),
+                new(date: "15/08", name: "Adesão do Pará à Independência do Brasil", location: Locations.Para),
 
                 // Paraíba
-                new(date: "05/08", name: "Fundação do Estado e Dia da Padroeira (Nossa Senhora das Neves)", location: Locations.Paraiba ),
+                new(date: "05/08", name: "Fundação do Estado e Dia da Padroeira (Nossa Senhora das Neves)", location: Locations.Paraiba),
 
                 // Paraná
-                new(date: "19/12", name: "Emancipação Política", location: Locations.Parana ),
+                new(date: "19/12", name: "Emancipação Política", location: Locations.Parana),
 
                 // Pernambuco
-                new(date: "06/03", name: "Revolução Pernambucana de 1817", location: Locations.Pernambuco ),
+                new(date: "06/03", name: "Revolução Pernambucana de 1817", location: Locations.Pernambuco),
 
                 // Piauí
-                new(date: "19/10", name: "Dia do Piauí", location: Locations.Piaui ),
+                new(date: "19/10", name: "Dia do Piauí", location: Locations.Piaui),
 
                 // Rio de Janeiro
-                new(date: "20/11", name: "Dia da Consciência Negra", location: Locations.RioDeJaneiro ),
-                new(date: "23/04", name: "Dia de São Jorge", location: Locations.RioDeJaneiro ),
+                new(date: "20/11", name: "Dia da Consciência Negra", location: Locations.RioDeJaneiro),
+                new(date: "23/04", name: "Dia de São Jorge", location: Locations.RioDeJaneiro),
 
                 // Rio Grande do Norte
-                new(date: "03/10", name: "Mártires de Cunhaú e Uruaçu", location: Locations.RioGrandeDoNorte ),
+                new(date: "03/10", name: "Mártires de Cunhaú e Uruaçu", location: Locations.RioGrandeDoNorte),
 
                 // Rio Grande do Sul
-                new(date: "20/09", name: "Revolução Farroupilha", location: Locations.RioGrandeDoSul ),
+                new(date: "20/09", name: "Revolução Farroupilha", location: Locations.RioGrandeDoSul),
 
                 // Rondônia
-                new(date: "04/01", name: "Criação do Estado", location: Locations.Rondonia ),
-                new(date: "18/06", name: "Dia do Evangélico", location: Locations.Rondonia ),
+                new(date: "04/01", name: "Criação do Estado", location: Locations.Rondonia),
+                new(date: "18/06", name: "Dia do Evangélico", location: Locations.Rondonia),
 
                 // Roraima
-                new(date: "05/10", name: "Criação do Estado", location: Locations.Roraima ),
+                new(date: "05/10", name: "Criação do Estado", location: Locations.Roraima),
 
                 // Santa Catarina
-                new(date: "11/08", name: "Dia de Santa Catarina (Criação da Capitania)", location: Locations.SantaCatarina ),
-                new(date: "25/07", name: "Dia do Colono e Motorista", location: Locations.SantaCatarina ),
+                new(date: "11/08", name: "Dia de Santa Catarina (Criação da Capitania)", location: Locations.SantaCatarina),
+                new(date: "25/07", name: "Dia do Colono e Motorista", location: Locations.SantaCatarina),
 
                 // São Paulo
-                new(date: "09/07", name: "Revolução Constitucionalista de 1932", location: Locations.SaoPaulo ),
+                new(date: "09/07", name: "Revolução Constitucionalista de 1932", location: Locations.SaoPaulo),
                 new(date: "20/11", name: "Dia da Consciência Negra", location: Locations.SaoPaulo),
 
                 // Sergipe
@@ -158,7 +158,7 @@ namespace Application.Helpers
         {
             var fixedHolidays = GetFixedHolidays(year, locationFilter);
             var movableHolidays = GetMovableHolidays(year, locationFilter);
-            
+
             var allHolidays = new List<Holiday>();
             allHolidays.AddRange(fixedHolidays);
             allHolidays.AddRange(movableHolidays);
@@ -167,7 +167,7 @@ namespace Application.Helpers
         }
 
         private static List<Holiday> GetFixedHolidays(int year, Locations? locationFilter)
-        {            
+        {
             var fixedHolidays = new List<Holiday>();
 
             foreach (var holiday in holidays)
@@ -175,8 +175,8 @@ namespace Application.Helpers
                 if (!IsValidHoliday(holiday, locationFilter)) continue;
 
                 if (TryParseDate(holiday.Date, year, out var date))
-                {
-                    fixedHolidays.Add(new Holiday(date.ToString("dd/MM/yyyy"), holiday.Name.Trim(), holiday.Location));
+                {                    
+                    fixedHolidays.Add(new Holiday(date.ToString("dd/MM/yyyy"), holiday.Name.Trim(), holiday.Location, GetDayOffWeek(date)));
                 }
             }
 
@@ -186,20 +186,20 @@ namespace Application.Helpers
         private static List<Holiday> GetMovableHolidays(int year, Locations? locatioFilter)
         {
             if (locatioFilter == Locations.Nacional)
-            { 
+            {
                 var pascoa = CalculatePascoa(year);
                 var movableHolidays = new[]
                 {
-                    new Holiday(pascoa.ToString("dd/MM/yyyy"), "Páscoa", Locations.Nacional),
-                        new Holiday(pascoa.AddDays(-47).ToString("dd/MM/yyyy"), "Carnaval", Locations.Nacional),
-                        new Holiday(pascoa.AddDays(-2).ToString("dd/MM/yyyy"), "Sexta-feira Santa", Locations.Nacional),
-                        new Holiday(pascoa.AddDays(60).ToString("dd/MM/yyyy"), "Corpus Christi", Locations.Nacional)
+                    new Holiday(pascoa.ToString("dd/MM/yyyy"), "Páscoa", Locations.Nacional, GetDayOffWeek(pascoa)),
+                    new Holiday(pascoa.AddDays(-47).ToString("dd/MM/yyyy"), "Carnaval", Locations.Nacional, GetDayOffWeek(pascoa.AddDays(-47))),
+                    new Holiday(pascoa.AddDays(-2).ToString("dd/MM/yyyy"), "Sexta-feira Santa", Locations.Nacional, GetDayOffWeek(pascoa.AddDays(-2))),
+                    new Holiday(pascoa.AddDays(60).ToString("dd/MM/yyyy"), "Corpus Christi", Locations.Nacional, GetDayOffWeek(pascoa.AddDays(60)))
                 };
                 return [.. movableHolidays];
             }
             return [];
         }
-        
+
         private static DateOnly CalculatePascoa(int year)
         {
             int a = year % 19;
@@ -220,6 +220,21 @@ namespace Application.Helpers
             return new DateOnly(year, month, day);
         }
 
+        public static string GetDayOffWeek(DateOnly date)
+        {
+            return date.DayOfWeek switch
+            {
+                DayOfWeek.Sunday => "Domingo",
+                DayOfWeek.Monday => "Segunda-feira",
+                DayOfWeek.Tuesday => "Terça-feira",
+                DayOfWeek.Wednesday => "Quarta-feira",
+                DayOfWeek.Thursday => "Quinta-feira",
+                DayOfWeek.Friday => "Sexta-feira",
+                DayOfWeek.Saturday => "Sábado",
+                _ => "Data inválida"
+            };
+        }
+
         private static bool IsValidHoliday(Holiday holiday, Locations? locationFilter)
         {
             if (string.IsNullOrWhiteSpace(holiday.Date) || string.IsNullOrWhiteSpace(holiday.Name))
@@ -234,7 +249,7 @@ namespace Application.Helpers
 
         private static bool TryParseDate(string dateString, int year, out DateOnly date)
         {
-           date = default;
+            date = default;
 
             if (string.IsNullOrWhiteSpace(dateString))
                 return false;

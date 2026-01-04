@@ -1,3 +1,4 @@
+<div class="card">
 <div class="card-body">
   <h2>Feriados por localidade</h2>
   <p class="subtitle">Selecione a localidade e o ano para visualizar todos os feriados</p>
@@ -27,14 +28,17 @@
         <tr>
           <th>Data</th>
           <th>Feriado</th>
+          <th>Dia da semana</th>          
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let r of holidayResults">
           <td>{{ r.date }}</td>
           <td>{{ r.name }}</td>
+          <td>{{ r.weekday }}</td>          
         </tr>
       </tbody>
     </table>
+    </div>
   </div>
 </div>
