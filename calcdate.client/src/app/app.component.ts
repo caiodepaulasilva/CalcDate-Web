@@ -75,8 +75,8 @@ export class AppComponent implements OnInit {
       .set('StartDate', this.startDate)
       .set('EndDate', this.endDate);
 
-    // Call the DayCalculations controller
-    this.http.get<DiffBetweenDatesResult>('/DayCalculations/DiffBetweenDates', { params }).subscribe({
+    // Call the Date controller
+    this.http.get<DiffBetweenDatesResult>('/api/v1/Date/DiffBetweenDates', { params }).subscribe({
       next: (res) => {
         this.diffResult = res;
         this.loading = false;
@@ -104,7 +104,7 @@ export class AppComponent implements OnInit {
       .set('EndDate', this.endDate)
       .set('DayOfWeek', String(this.dayOfWeek));
 
-    this.http.get<number>('/DayCalculations/CountDaysOfWeek', { params }).subscribe({
+    this.http.get<number>('/api/v1/Date/CountDaysOfWeek', { params }).subscribe({
       next: (res) => {
         this.countResult = res;
         this.loadingCount = false;

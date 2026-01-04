@@ -43,7 +43,7 @@ export class DiffComponent implements OnInit {
       .set('StartDate', this.startDate)
       .set('EndDate', this.endDate);
 
-    this.http.get<DiffBetweenDatesResult>('/DayCalculations/DiffBetweenDates', { params }).subscribe({
+    this.http.get<DiffBetweenDatesResult>('/api/v1/Date/DiffBetweenDates', { params }).subscribe({
       next: (res) => {
         this.diffResult = res;
         this.loading = false;

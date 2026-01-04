@@ -6,7 +6,8 @@ const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_H
 const PROXY_CONFIG = [
   {
     context: [
-      "/DayCalculations",
+      "/api/v1/Date",
+      "/api/v1/Holiday"
     ],
     target,
     secure: false

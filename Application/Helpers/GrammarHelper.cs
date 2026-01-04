@@ -2,15 +2,15 @@
 {
     public static class GrammarHelper
     {
-        public static string NumberInflection(int quantidade, string singular, string plural)
+        public static string NumberInflection(int quantity, string singular, string plural)
         {
-            if (quantidade == 0)
+            if (quantity == 0)
                 return $"0 {plural}";
 
-            if (quantidade == 1)
+            if (quantity == 1)
                 return $"1 {singular}";
 
-            return $"{quantidade} {plural}";
+            return $"{quantity} {plural}";
         }
     }
 }

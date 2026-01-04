@@ -1,20 +1,21 @@
 using Application.Commands;
+using Mediator;
+using FluentValidation;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddMediator();
 
-builder.Services.AddMediatR(cfg =>
-{
-    cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
-    cfg.RegisterServicesFromAssembly(typeof(GetDiffBetweenDatesCommand).Assembly);
-    cfg.RegisterServicesFromAssembly(typeof(CountDaysOfWeekCommand).Assembly);
-    cfg.RegisterServicesFromAssembly(typeof(CountBusinessDaysCommand).Assembly);
-});
+// Add FluentValidation
+builder.Services.AddValidatorsFromAssembly(Assembly.Load("Application"));
 
-builder.Services.AddCors(options =>
+builder.Services.AddControllers();
+
+builder.Services.AddCors(static options =>
 {
     options.AddPolicy("AllowAngularApp",
-        policy =>
+        static policy =>
         {
             policy.WithOrigins("http://localhost:56459") // URL do Angular
                   .AllowAnyHeader()
@@ -24,7 +25,6 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddOpenApi();
-builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -46,3 +46,4 @@ app.MapControllers();
 app.MapFallbackToFile("/index.html");
 
 app.Run();
+

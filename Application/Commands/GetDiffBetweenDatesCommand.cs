@@ -1,12 +1,13 @@
 ﻿using Application.Models;
-using MediatR;
+using System;
+using Mediator;
 
 namespace Application.Commands
 {
     public class GetDiffBetweenDatesCommand : IRequest<DiffBetweenDatesResult>
     {
-        public required DateTime StartDate { get; set; }
+        public required DateOnly StartDate { get; set; }
 
-        public required DateTime EndDate { get; set; } = DateTime.Now;
+        public required DateOnly EndDate { get; set; } = DateOnly.FromDateTime(DateTime.Now);
     }
 }

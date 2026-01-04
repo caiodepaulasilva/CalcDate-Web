@@ -17,6 +17,49 @@ export class CountDaysWeekComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
+  private normalizeCountResult(res: any): any {
+    if (res === null || res === undefined) return res;
+    if (typeof res === 'number') return res;
+
+    const weekdays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+
+    // If server returned an array of entries, try to convert to an object
+    if (Array.isArray(res)) {
+      const obj: Record<string, any> = {};
+      for (const item of res) {
+        if (item === null || item === undefined) continue;
+        if (Array.isArray(item) && item.length >= 2) {
+          obj[item[0]] = item[1];
+          continue;
+        }
+        if (typeof item === 'object') {
+          const keys = Object.keys(item);
+          // try to detect day/name and value/count keys
+          const dayKey = keys.find(k => ['day','Day','name','Name','weekday','WeekDay'].includes(k));
+          const valueKey = keys.find(k => ['count','Count','value','Value','total','Total','quantity','Quantity'].includes(k));
+          if (dayKey && valueKey) {
+            obj[item[dayKey]] = item[valueKey];
+            continue;
+          }
+
+          // fallback: if object has one string and one number property
+          const stringKey = keys.find(k => typeof item[k] === 'string');
+          const numberKey = keys.find(k => typeof item[k] === 'number');
+          if (stringKey && numberKey) {
+            obj[item[stringKey]] = item[numberKey];
+            continue;
+          }
+        }
+      }
+      return obj;
+    }
+
+    // If it's already an object, just return it
+    if (typeof res === 'object') return res;
+
+    return res;
+  }
+
   ngOnInit(): void {
     const today = new Date();
     const prior = new Date();
@@ -39,9 +82,11 @@ export class CountDaysWeekComponent implements OnInit {
       .set('StartDate', this.startDate)
       .set('EndDate', this.endDate)      
 
-    this.http.get<any>('/DayCalculations/CountDaysOfWeek', { params }).subscribe({
+    this.http.get<any>('/api/v1/Date/CountDaysOfWeek', { params }).subscribe({
       next: (res) => {
-        this.countResult = res;
+        console.log('raw count result', res);
+        this.countResult = this.normalizeCountResult(res);
+        console.log('normalized count result', this.countResult);
         this.loading = false;
       },
       error: (err) => {
@@ -92,6 +137,47 @@ export class CountDaysWeekComponent implements OnInit {
 
   get countResultEntries(): [string, any][] {
     if (this.countResult === null || typeof this.countResult !== 'object') return [];
-    return Object.entries(this.countResult);
+
+    // Prefer a fixed Monday..Sunday order and translate keys to Portuguese
+    const dayMap: Record<string, string> = {
+      Monday: 'Segunda-feira',
+      Tuesday: 'Terça-feira',
+      Wednesday: 'Quarta-feira',
+      Thursday: 'Quinta-feira',
+      Friday: 'Sexta-feira',
+      Saturday: 'Sábado',
+      Sunday: 'Domingo'
+    };
+
+    const order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+    const entries: [string, any][] = [];
+    const matchedKeys = new Set<string>();
+
+    // For each weekday, try several key variants to be robust against JSON naming policies
+    for (const key of order) {
+      const pascal = key; // Monday
+      const camel = key.charAt(0).toLowerCase() + key.slice(1); // monday
+      const lower = key.toLowerCase(); // monday (same as camel for single-word)
+
+      const src = this.countResult as Record<string, any>;
+      let foundKey: string | undefined;
+
+      if (pascal in src) foundKey = pascal;
+      else if (camel in src) foundKey = camel;
+      else if (lower in src) foundKey = lower;
+
+      if (foundKey) {
+        entries.push([dayMap[key], src[foundKey]]);
+        matchedKeys.add(foundKey);
+      }
+    }
+
+    // Append any other properties returned by server that are not matched weekdays
+    for (const [k, v] of Object.entries(this.countResult)) {
+      if (!matchedKeys.has(k)) entries.push([k, v]);
+    }
+
+    return entries;
   }
 }

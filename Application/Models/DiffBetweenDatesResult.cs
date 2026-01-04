@@ -8,21 +8,21 @@
 
         public override string ToString()
         {
-            var partes = new List<string>();
+            var parts = new List<string>();
 
             if (Years > 0)
-                partes.Add($"{Years} {(Years == 1 ? "ano" : "anos")}");
+                parts.Add($"{Years} {(Years == 1 ? "ano" : "anos")}");
             if (Months > 0)
-                partes.Add($"{Months} {(Months == 1 ? "mês" : "meses")}");
+                parts.Add($"{Months} {(Months == 1 ? "mês" : "meses")}");
             if (Days > 0)
-                partes.Add($"{Days} {(Days == 1 ? "dia" : "dias")}");
+                parts.Add($"{Days} {(Days == 1 ? "dia" : "dias")}");
 
-            return partes.Count switch
+            return parts.Count switch
             {
                 0 => "0 dias",
-                1 => partes[0],
-                2 => $"{partes[0]} e {partes[1]}",
-                _ => $"{string.Join(", ", partes.Take(partes.Count - 1))} e {partes.Last()}",
+                1 => parts[0],
+                2 => $"{parts[0]} e {parts[1]}",
+                _ => $"{string.Join(", ", parts.Take(parts.Count - 1))} e {parts.Last()}",
             };
         }
     }

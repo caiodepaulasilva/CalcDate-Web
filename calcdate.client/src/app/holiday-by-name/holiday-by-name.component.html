@@ -1,0 +1,40 @@
+<div class="card-body">
+  <h2>Feriados por localidade</h2>
+  <p class="subtitle">Selecione a localidade e o ano para visualizar todos os feriados</p>
+
+  <form class="form">
+    <div class="form-row">
+      <label for="h-location">Localidade</label>
+      <select id="h-location" name="hLocation" [(ngModel)]="selectedLocation" (change)="onLocationChangeEvent()">
+        <option *ngFor="let s of locations" [value]="s.value">{{ s.label }}</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label for="h-year">Ano</label>
+      <input id="h-year" name="hYear" type="number" [(ngModel)]="year" min="1900" max="3000" (change)="loadAllHolidays()" />
+    </div>
+  </form>
+
+  <div *ngIf="loading" class="status">Carregando...</div>
+  <div *ngIf="error" class="status error">{{ error }}</div>
+
+  <div *ngIf="holidayResults.length" class="result">
+    <h3>Feriados - {{ year }}</h3>
+
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Feriado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of holidayResults">
+          <td>{{ r.date }}</td>
+          <td>{{ r.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
